@@ -9,6 +9,7 @@ char* toBinary(int n) {
     toBinary(n / 2);
     strcat(bin, (n % 2 == 0) ? "0" : "1");
 }
+//
 
 int main() {
     int n;
