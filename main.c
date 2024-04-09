@@ -1,24 +1,21 @@
 #include <stdio.h>
-/*
-*Написати рекурсивну функцію переведення числа з десяткової
-системи числення до двійкової.
- */
+#include <string.h>
 
-long tobinary(int number); //переведення числа з десяткової системи в двійкову. number - число яке треба конвертувати
-
-int main(void) {
-    int number;
-    //отримання числа
-    puts("Input number");
-    scanf("%d", &number);
-    //виведення двійкового представлення
-    printf("Binary: %ld", tobinary(number));
-    return 0;
+char* toBinary(int n) {
+    static char bin[32];
+    if (n == 0) {
+        return bin;
+    }
+    toBinary(n / 2);
+    strcat(bin, (n % 2 == 0) ? "0" : "1");
 }
 
-long tobinary(int number) {
-    if (number == 0) {
-        return 0;
-    }
-    return number % 2 + 10 * tobinary(number/2);
+int main() {
+    int n;
+    printf("Введіть число: ");
+    scanf("%d", &n);
+
+    printf("Двійкове число: %s\n", toBinary(n));
+
+    return 0;
 }
